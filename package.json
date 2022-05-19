@@ -11,6 +11,7 @@
     "format": "prettier --write \"**/*.+(js|json|yml|ts|tsx)\""
   },
   "dependencies": {
+    "antd": "^4.20.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0"
@@ -25,8 +26,10 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "less": "^4.1.2",
     "prettier": "^2.6.2",
     "typescript": "^4.6.3",
-    "vite": "^2.9.9"
+    "vite": "^2.9.9",
+    "vite-plugin-imp": "^2.1.8"
   }
 }

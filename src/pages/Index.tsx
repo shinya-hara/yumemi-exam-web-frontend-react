@@ -1,9 +1,10 @@
-import { Checkbox, Col, Layout, Row } from 'antd';
+import { Button, Checkbox, Col, Layout, Row, Space } from 'antd';
 import { CheckboxValueType } from 'antd/lib/checkbox/Group';
 import { Header, Content } from 'antd/lib/layout/layout';
 import { useCallback } from 'react';
 import { LineChartPopulation } from '../components/LineChartPopulation';
 import { usePrefecturePopulation } from '../hooks/usePrefecturePopulation';
+import { GithubOutlined } from '@ant-design/icons';
 
 export const PageIndex = () => {
   const { prefectures, prefectureOptions, setSelectedPrefectures, chartData } =
@@ -21,8 +22,18 @@ export const PageIndex = () => {
 
   return (
     <Layout>
-      <Header style={{ background: '#d9d9d9' }}>
-        ゆめみ フロントエンド試験
+      <Header
+        style={{ display: 'flex', alignItems: 'center', background: '#d9d9d9' }}
+      >
+        <span>ゆめみ フロントエンド試験</span>
+        <Button
+          type="text"
+          shape="circle"
+          icon={<GithubOutlined />}
+          href="https://github.com/shinya-hara/yumemi-exam-web-frontend-react"
+          target="_blank"
+          style={{ marginLeft: 'auto' }}
+        />
       </Header>
       <Content
         style={{ minHeight: 'calc(100vh - 64px)', padding: ' 20px 50px' }}

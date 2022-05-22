@@ -1,7 +1,6 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import {
   LineChart as RechartsLineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -11,10 +10,21 @@ import {
 } from 'recharts';
 
 interface Props {
-  data: any[];
+  children: ReactNode;
+  data: { [key: string]: number }[];
+  xAxisDataKey?: string;
 }
 
-export const LineChart: FC<Props> = ({ data }) => {
+/**
+ * チャートの線の色を表示項目数に応じていい感じに算出する
+ * @param index
+ */
+export const getChartLineColor = (dataCount: number, index: number) => {
+  const hue = (360 /* degree */ / dataCount) /* 表示項目数 */ * index;
+  return `hsl(${hue}, 60%, 60%)`;
+};
+
+export const LineChart: FC<Props> = ({ children, data, xAxisDataKey }) => {
   return (
     <ResponsiveContainer width="100%" height="100%" minHeight={400}>
       <RechartsLineChart
@@ -27,12 +37,11 @@ export const LineChart: FC<Props> = ({ data }) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="year" />
+        <XAxis dataKey={xAxisDataKey} />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="A" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="B" />
+        {children}
       </RechartsLineChart>
     </ResponsiveContainer>
   );
